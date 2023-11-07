@@ -1,0 +1,12 @@
+x=2  # Starting Point
+lr=0.01  # Learning Rate
+precision=0.00001  # Upto what decimal point or upto what precision
+previous_step_size=1
+max_iterator=1000 # how many iteration you want
+iters=1
+gf=lambda x: (x+3)**2
+
+print("Local minima",x)
+
+import matplotlib.pyplot as plt
+plt.plot(gd)
