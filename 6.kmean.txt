@@ -1,0 +1,27 @@
+import pandas as pd
+import numpy as np
+
+df=pd.read_csv("sales_data_sample.csv",encoding='unicode_escape')
+df
+
+df.isna().sum()
+
+df=df.select_dtypes(include=["int64"])
+df
+
+sse=[]
+k_values=range(1,10)
+
+from sklearn.cluster import KMeans
+for k in k_values:
+    kmean=KMeans(n_clusters=k,n_init=10)
+    kmean.fit(df)
+    sse.append(kmean.inertia_)
+
+import matplotlib.pyplot as plt
+plt.figure(figsize=(8, 6))
+plt.plot(k_values, sse, marker="o")
+plt.xlabel("Number of cluster")
+plt.ylabel("SSE(Sum Of Square error)")
+plt.grid()
+plt.show()
